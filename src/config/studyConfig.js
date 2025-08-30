@@ -142,7 +142,7 @@ export const STUDY_CONFIG = {
     
     // Optional logo (set showLogo to false to hide)
     showLogo: true,
-    logo: "/study-logo.png", // URL or path to logo image - REPLACE THIS WITH YOUR PNG
+    logo: process.env.NODE_ENV === 'production' ? "/randomizer-redirect/study-logo.png" : "/study-logo.png", // URL or path to logo image
     logoAlt: "Study Logo", // Alt text for accessibility
     logoWidth: "200px", // Optional: control logo size
     logoHeight: "auto", // Optional: control logo height

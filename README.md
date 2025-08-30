@@ -19,12 +19,6 @@ cd randomizer-redirect
 npm install
 npm run dev
 ```
-
-### Access
-- Local: `http://localhost:5173/randomizer-redirect/`
-- Production: Your GitHub Pages URL
-
-
 ## Study Configuration
 
 ### Questions Setup
@@ -121,35 +115,6 @@ security: {
    ```
 
 3. GitHub Actions will automatically deploy to GitHub Pages
-
-### Manual Build
-```bash
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## Development
-
-### Commands
-```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Run linter
-npm run lint
-
-# Fix linting issues
-npm run lint:fix
-```
 
 
 

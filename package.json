@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A secure AB testing randomizer for research studies",
   "type": "module",
-  "homepage": "https://creativastudio.ink",
+  "homepage": "https://github.com/ifisYuki/creativastudio-survey",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

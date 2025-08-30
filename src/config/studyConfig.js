@@ -135,7 +135,7 @@ export const STUDY_CONFIG = {
   // Welcome Page Configuration
   welcomePage: {
     enabled: true, // Set to false to skip welcome page and go directly to questions
-    title: "GenAI Tools Research Study",
+    title: "Research on a New AI Tool for Creatives",
     subtitle: "We are recruiting creative practitioners like you to help evaluate a new GenAI prototype for creative workflows.",
 
     // description: "We're evaluating a new GenAI prototype designed specifically for creative workflows. Your insights will directly influence how AI tools are developed for the creative industry.",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A secure AB testing randomizer for research studies",
   "type": "module",
-  "homepage": "https://squarezhong.github.io/randomizer-redirect",
+  "homepage": "https://github.com/ifisYuki/randomizer-redirect",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

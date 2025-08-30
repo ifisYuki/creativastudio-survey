@@ -27,13 +27,13 @@ const QuestionForm = ({ question, onAnswer, currentAnswer }) => {
   };
 
   return (
-    <div className="animate-fade-in">
+    <div className="slide-in">
       <fieldset>
-        <legend className="text-lg font-semibold text-gray-700 mb-2">
+        <legend className="text-xl font-bold text-gray-800 mb-3 leading-relaxed">
           {question.title}
         </legend>
         {question.subtitle && (
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-gray-600 mb-6 italic bg-gray-50 p-3 rounded-lg border-l-4 border-blue-400">
             {question.subtitle}
           </p>
         )}

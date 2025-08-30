@@ -149,12 +149,12 @@ const Randomizor = () => {
 
   if (isCompleted) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl text-center">
-          <h2 className="text-xl font-semibold text-blue-700 mb-2">
+      <div className="flex items-center justify-center min-h-screen p-4 fade-in">
+        <div className="glass-card p-8 rounded-2xl shadow-modern-lg w-full max-w-2xl text-center">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             {STUDY_CONFIG.messages.completed}
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-700 text-lg">
             {STUDY_CONFIG.messages.completedSubtitle}
           </p>
         </div>
@@ -164,12 +164,12 @@ const Randomizor = () => {
 
   if (isDisqualified) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl text-center">
-          <h2 className="text-xl font-semibold text-amber-700 mb-2">
+      <div className="flex items-center justify-center min-h-screen p-4 fade-in">
+        <div className="glass-card p-8 rounded-2xl shadow-modern-lg w-full max-w-2xl text-center">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-4">
             {STUDY_CONFIG.messages.disqualified}
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-700 text-lg">
             {STUDY_CONFIG.messages.disqualifiedSubtitle}
           </p>
         </div>
@@ -187,17 +187,8 @@ const Randomizor = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
-      <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl">
-        <header className="mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center">
-            {STUDY_CONFIG.title}
-          </h1>
-          <p className="text-gray-600 text-center">
-            {STUDY_CONFIG.description}
-          </p>
-        </header>
-        
+    <div className="flex items-center justify-center min-h-screen p-4 fade-in">
+      <div className="glass-card p-8 rounded-2xl shadow-modern-lg w-full max-w-2xl">
         <main>
           <QuestionForm
             question={currentQuestion}

@@ -2,7 +2,7 @@
 export const STUDY_CONFIG = {
   // Study metadata
   title: "Feedback on a GenAI Prototype for Creative Workflow",
-  description: "Thank you for your interest in this study. This survey is about the impact of AI on creative practices. Before we begin, we need to ask a few questions to determine your eligibility.",
+  description: "Thank you for your interest in this study. This survey is about to test a prototype of a GenAI tool for creative workflows. Before we begin, we need to ask a few questions to determine your eligibility.",
   
   // Debug and Testing Configuration
   debug: {
@@ -45,14 +45,14 @@ export const STUDY_CONFIG = {
       id: 'field',
       type: 'radio',
       title: 'Which of the following best describes your professional field?',
-      subtitle: '(If you are in an interdisciplinary field that covers creative work, please select the most relevant option to your role.)',
+      subtitle: '(If you are in an interdisciplinary field that covers creative work, please choose "Creative Arts, Design, or Media".)',
       options: [
         { value: 'creative', label: 'Creative Arts, Design, or Media' },
         { value: 'business', label: 'Business, Marketing, or Sales' },
         { value: 'finance', label: 'Finance, Accounting, or Banking' },
         { value: 'healthcare', label: 'Healthcare or Medicine' },
         { value: 'education', label: 'Education or Academia' },
-        { value: 'tech', label: 'Technology or IT' },
+        { value: 'tech', label: 'Technology or IT (without a creative role)' },
         { value: 'engineering', label: 'Engineering or Science' },
         { value: 'service', label: 'Customer Service or Hospitality' },
         { value: 'government', label: 'Government or Public Service' },
@@ -132,6 +132,44 @@ export const STUDY_CONFIG = {
     primaryColor: 'blue'
   },
   
+  // Welcome Page Configuration
+  welcomePage: {
+    enabled: true, // Set to false to skip welcome page and go directly to questions
+    title: "GenAI Tools Research Study",
+    subtitle: "We are recruiting creative practitioners like you to help evaluate a new GenAI prototype for creative workflows.",
+
+    // description: "We're evaluating a new GenAI prototype designed specifically for creative workflows. Your insights will directly influence how AI tools are developed for the creative industry.",
+    
+    // Optional logo (set showLogo to false to hide)
+    showLogo: true,
+    logo: "/randomizer-redirect/public/study-logo.png", // URL or path to logo image - REPLACE THIS WITH YOUR PNG
+    logoAlt: "Study Logo", // Alt text for accessibility
+    logoWidth: "200px", // Optional: control logo size
+    logoHeight: "auto", // Optional: control logo height
+    
+    // Key points to highlight (optional)
+    // keyPoints: [
+    //   "The study takes approximately 10-15 minutes to complete",
+    //   "Your responses will be kept completely confidential",
+    //   "You can withdraw from the study at any time",
+    //   "There are no right or wrong answers"
+    // ],
+    // keyPointsTitle: "Before we begin:", // Title for the key points section
+    
+    // Additional information box (optional)
+    additionalInfo: "Quick setup: Stable internet required • Complete in one sitting • Takes 10-15 minutes",
+    
+    // Time estimate (optional)
+    // timeEstimate: "10-15 minutes",
+    
+    // Button customization
+    buttonText: "Let's Begin",
+    buttonStyle: "blue", // Options: "blue", "green", "red"
+    
+    // Footer text (optional)
+    // footerText: "By continuing, you consent to participate in this research study."
+  },
+
   // Messages
   messages: {
     loading: 'Initializing study...',

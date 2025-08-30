@@ -36,7 +36,7 @@ export const STUDY_CONFIG = {
   // Form URLs for each group
   formUrls: {
     'A': 'https://forms.gle/ESnUMgn2eKwGDJYA9',
-    'B': 'https://forms.gle/JA7ecwbezB5ere8s8'
+    'B': 'https://forms.gle/7d7xCUWr1HRpFpc49'
   },
   
   // Questions configuration - Easy to modify

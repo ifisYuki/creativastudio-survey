@@ -65,7 +65,7 @@ const EndPage = () => {
           Thank you for your time
         </h1>
         <p className="text-gray-600 text-lg">
-          Based on your responses, you do not currently qualify for this study. We appreciate your interest.
+          Based on your responses, you do not currently qualify for this study. We appreciate your interest. If you have any questions, please contact us at yukizhuyue@outlook.com.
         </p>
         
         <div className="mt-8 pt-6 border-t border-gray-200">

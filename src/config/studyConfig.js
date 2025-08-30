@@ -1,0 +1,186 @@
+// Study Configuration - Easy to modify settings and logic
+export const STUDY_CONFIG = {
+  // Study metadata
+  title: "Feedback on a GenAI Prototype for Creative Workflow",
+  description: "Thank you for your interest in this study. This survey is about the impact of AI on creative practices. Before we begin, we need to ask a few questions to determine your eligibility.",
+  
+  // Debug and Testing Configuration
+  debug: {
+    enabled: true, // Set to false in production
+    showDeviceInfo: true, // Show device ID in console
+    bypassSecurity: false, // Set to true to bypass some security for testing
+    testMode: true, // Enable test mode features
+    showExemptionStatus: true // Show when device exemptions are working
+  },
+  
+  // Device Exemption List - Add your device IDs here for testing
+  deviceExemptions: [
+    'gsato4', // Your actual device ID
+    'test-device-1', // Test device for development
+    'test-device-2', // Test device for development
+    'test-device-3', // Test device for development
+    // Add more device IDs as needed
+  ],
+  
+  // AB Testing configuration
+  abTesting: {
+    enabled: true,
+    groups: ['A', 'B'],
+    splitRatio: 0.5, // 50/50 split
+    groupNames: {
+      'A': 'Control Group',
+      'B': 'Treatment Group'
+    }
+  },
+  
+  // Form URLs for each group
+  formUrls: {
+    'A': 'https://forms.gle/ESnUMgn2eKwGDJYA9',
+    'B': 'https://forms.gle/JA7ecwbezB5ere8s8'
+  },
+  
+  // Questions configuration - Easy to modify
+  questions: {
+    q1: {
+      id: 'field',
+      type: 'radio',
+      title: 'Which of the following best describes your professional field?',
+      subtitle: '(If you are in an interdisciplinary field that covers creative work, please select the most relevant option to your role.)',
+      options: [
+        { value: 'creative', label: 'Creative Arts, Design, or Media' },
+        { value: 'business', label: 'Business, Marketing, or Sales' },
+        { value: 'finance', label: 'Finance, Accounting, or Banking' },
+        { value: 'healthcare', label: 'Healthcare or Medicine' },
+        { value: 'education', label: 'Education or Academia' },
+        { value: 'tech', label: 'Technology or IT' },
+        { value: 'engineering', label: 'Engineering or Science' },
+        { value: 'service', label: 'Customer Service or Hospitality' },
+        { value: 'government', label: 'Government or Public Service' },
+        { value: 'other', label: 'Other' }
+      ],
+      nextStep: 'q2',
+      disqualifyOn: ['business', 'finance', 'healthcare', 'education', 'tech', 'engineering', 'service', 'government', 'other'], // Disqualify non-creative fields
+      required: true
+    },
+    
+    q2: {
+      id: 'experience',
+      type: 'select',
+      title: 'When did you begin your professional career in this field?',
+      options: [
+        { value: 'less_than_1_year', label: 'Less than 1 year' },
+        { value: '1_to_3_years', label: '1 to 3 years ago' },
+        { value: '3_to_5_years', label: '3 to 5 years ago' },
+        { value: '5_to_10_years', label: '5 to 10 years ago' },
+        { value: 'more_than_10_years', label: 'More than 10 years ago' }
+      ],
+      nextStep: 'q3',
+      disqualifyOn: 'less_than_1_year', // Disqualify if this answer is selected
+      required: true
+    },
+    
+    q3: {
+      id: 'genai_usage',
+      type: 'radio',
+      title: 'How would you describe your familiarity with Generative AI tools in your work?',
+      options: [
+        { value: 'limited', label: 'I have no or very limited exposure to them.' },
+        { value: 'experimented', label: 'I have experimented with them but do not use them regularly.' },
+        { value: 'regular', label: 'They are a regular part of my workflow.' },
+        { value: 'essential', label: 'They are essential to my creative process.' }
+      ],
+      nextStep: 'redirect',
+      disqualifyOn: 'limited', // Disqualify if limited usage
+      required: true
+    }
+  },
+  
+  // Flow logic - Easy to modify
+  flowLogic: {
+    // Define what happens after each question
+    field: {
+      creative: 'q2', // Only creative fields go to q2
+      default: 'disqualify' // All other fields disqualify
+    },
+    
+    experience: {
+      less_than_1_year: 'disqualify', // If less than 1 year, disqualify
+      default: 'q3' // Any other answer goes to q3
+    },
+    
+    genai_usage: {
+      limited: 'disqualify', // If limited usage, disqualify
+      default: 'redirect' // Any other answer goes to redirect
+    }
+  },
+  
+  // Security settings
+  security: {
+    preventBackNavigation: true,
+    preventRightClick: true,
+    preventDevTools: true,
+    preventRefresh: true,
+    sessionTimeout: 60000, // 1 minute
+    deviceFingerprinting: true
+  },
+  
+  // UI settings
+  ui: {
+    loadingDelay: 2000, // 2 seconds before redirect
+    animations: true,
+    theme: 'light',
+    primaryColor: 'blue'
+  },
+  
+  // Messages
+  messages: {
+    loading: 'Initializing study...',
+    redirecting: 'Preparing Study',
+    redirectSubtitle: 'Please wait while we prepare your study materials...',
+    completed: 'Thank You',
+    completedSubtitle: 'Our records indicate that you have already completed this screening. Thank you for your time.',
+    disqualified: 'Redirecting...',
+    disqualifiedSubtitle: 'You will be redirected to the completion page.',
+    error: 'An error occurred. Please try again.'
+  }
+};
+
+// Helper function to get question by step
+export const getQuestionByStep = (step) => {
+  return STUDY_CONFIG.questions[step];
+};
+
+// Helper function to get next step based on answer
+export const getNextStep = (questionId, answer) => {
+  const question = Object.values(STUDY_CONFIG.questions).find(q => q.id === questionId);
+  if (!question) return null;
+  
+  // Check if this answer should disqualify
+  if (question.disqualifyOn) {
+    if (Array.isArray(question.disqualifyOn)) {
+      if (question.disqualifyOn.includes(answer)) {
+        return 'disqualify';
+      }
+    } else if (question.disqualifyOn === answer) {
+      return 'disqualify';
+    }
+  }
+  
+  // Return next step or default
+  return question.nextStep || 'disqualify';
+};
+
+// Helper function to check if answer should disqualify
+export const shouldDisqualify = (questionId, answer) => {
+  const question = Object.values(STUDY_CONFIG.questions).find(q => q.id === questionId);
+  if (!question) return false;
+  
+  if (question.disqualifyOn) {
+    if (Array.isArray(question.disqualifyOn)) {
+      return question.disqualifyOn.includes(answer);
+    }
+    return question.disqualifyOn === answer;
+  }
+  
+  return false;
+};
